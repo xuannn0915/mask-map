@@ -120,7 +120,7 @@
   color: #9C9C9C;
 }
 
-@media (max-width: 14400px) {
+@media (max-width: 1440px) {
   .sidebar {
     width: 45%;
   }
