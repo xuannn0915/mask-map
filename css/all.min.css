@@ -80,8 +80,8 @@
   margin-right: 8px;
   display: inline-block;
   background-color: #888;
-  -webkit-mask: url(/img/geo-alt-fill.svg);
-          mask: url(/img/geo-alt-fill.svg);
+  -webkit-mask: url(/img/geo-alt-fill.svg) no-repeat 0 0;
+          mask: url(/img/geo-alt-fill.svg) no-repeat 0 0;
 }
 .sidebar .list-item .item-phone {
   margin-top: 16px;
