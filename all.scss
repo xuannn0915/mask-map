@@ -57,7 +57,7 @@
         }
 
         .dropdown {
-            background: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/caret-down-fill.svg) white;
+            background: url(img/caret-down-fill.svg) white;
             background-position: top 50% right 16px;
             background-repeat: no-repeat;
         }
@@ -89,7 +89,7 @@
                 margin-right: 8px;
                 display: inline-block;
                 background-color: #888;
-                mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/geo-alt-fill.svg) no-repeat 0 0;
+                mask: url(../img/geo-alt-fill.svg) no-repeat 0 0;
             }
         }
 
@@ -106,7 +106,7 @@
                 margin-right: 8px;
                 display: inline-block;
                 background-color: #888;
-                mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/telephone-fill.svg) no-repeat 0 0;
+                mask: url(../img/telephone-fill.svg) no-repeat 0 0;
             }
         }
 
@@ -139,11 +139,11 @@
 
 
 @media (max-width:1400px) {
-    .sidebar {
+    .sidebar{
         width: 45%;
 
-        .top {
-            .info {
+        .top{
+            .info{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -152,20 +152,20 @@
                     text-align: start;
                 }
 
-                h2 {
+                h2{
                     margin-bottom: 16px;
                 }
             }
         }
 
-        .list-item {
+        .list-item{
 
-            .mask {
+            .mask{
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-
-                &-button {
+        
+                &-button{
                     width: 100%;
                     border-right: 0px;
                     border-bottom: 1px solid white;
@@ -174,6 +174,6 @@
 
             }
         }
-
+        
     }
 }
