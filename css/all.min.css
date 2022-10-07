@@ -52,7 +52,7 @@
   font-size: 18px;
 }
 .sidebar .top .dropdown {
-  background-image: url(img/caret-down-fill.svg);
+  background-image: url(../img/caret-down-fill.svg);
   background-position: top 50% right 16px;
   background-repeat: no-repeat;
 }
@@ -80,8 +80,8 @@
   margin-right: 8px;
   display: inline-block;
   background-color: #888;
-  -webkit-mask: url(img/geo-alt-fill.svg) no-repeat 0 0;
-          mask: url(img/geo-alt-fill.svg) no-repeat 0 0;
+  -webkit-mask: url(../img/geo-alt-fill.svg) no-repeat 0 0;
+          mask: url(../img/geo-alt-fill.svg) no-repeat 0 0;
 }
 .sidebar .list-item .item-phone {
   margin-top: 16px;
@@ -96,8 +96,8 @@
   margin-right: 8px;
   display: inline-block;
   background-color: #888;
-  -webkit-mask: url(img/telephone-fill.svg) no-repeat 0 0;
-          mask: url(img/telephone-fill.svg) no-repeat 0 0;
+  -webkit-mask: url(../img/telephone-fill.svg) no-repeat 0 0;
+          mask: url(../img/telephone-fill.svg) no-repeat 0 0;
 }
 .sidebar .list-item .mask {
   display: flex;
