@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+}
+
+
+
+#map {
+    width: 75%;
+    height: 100vh;
+}
+
 .sidebar {
     width: 25%;
     height: 100vh;
@@ -57,15 +68,15 @@
         }
 
         .dropdown {
-            background: url(img/caret-down-fill.svg) white;
+            background: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/caret-down-fill.svg) white;
             background-position: top 50% right 16px;
             background-repeat: no-repeat;
         }
     }
 
     .list {
+        height: calc(100vh - 211px);
         overflow-y: auto;
-        height: calc(100vh - 200px);
     }
 
     .list-item {
@@ -89,7 +100,7 @@
                 margin-right: 8px;
                 display: inline-block;
                 background-color: #888;
-                mask: url(../img/geo-alt-fill.svg) no-repeat 0 0;
+                mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/geo-alt-fill.svg) no-repeat 0 0;
             }
         }
 
@@ -106,7 +117,7 @@
                 margin-right: 8px;
                 display: inline-block;
                 background-color: #888;
-                mask: url(../img/telephone-fill.svg) no-repeat 0 0;
+                mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/telephone-fill.svg) no-repeat 0 0;
             }
         }
 
@@ -139,11 +150,11 @@
 
 
 @media (max-width:1400px) {
-    .sidebar{
+    .sidebar {
         width: 45%;
 
-        .top{
-            .info{
+        .top {
+            .info {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -152,20 +163,20 @@
                     text-align: start;
                 }
 
-                h2{
+                h2 {
                     margin-bottom: 16px;
                 }
             }
         }
 
-        .list-item{
+        .list-item {
 
-            .mask{
+            .mask {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-        
-                &-button{
+
+                &-button {
                     width: 100%;
                     border-right: 0px;
                     border-bottom: 1px solid white;
@@ -174,6 +185,6 @@
 
             }
         }
-        
+
     }
 }

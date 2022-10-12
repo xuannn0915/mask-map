@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+}
+
+#map {
+  width: 75%;
+  height: 100vh;
+}
+
 .sidebar {
   width: 25%;
   height: 100vh;
@@ -52,13 +61,13 @@
   font-size: 18px;
 }
 .sidebar .top .dropdown {
-  background: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/caret-down-fill.svg) white;
+  background: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/caret-down-fill.svg) white;
   background-position: top 50% right 16px;
   background-repeat: no-repeat;
 }
 .sidebar .list {
+  height: calc(100vh - 211px);
   overflow-y: auto;
-  height: calc(100vh - 200px);
 }
 .sidebar .list-item {
   border-bottom: 1px solid #E2E2E2;
@@ -80,8 +89,8 @@
   margin-right: 8px;
   display: inline-block;
   background-color: #888;
-  -webkit-mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/geo-alt-fill.svg) no-repeat 0 0;
-          mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/geo-alt-fill.svg) no-repeat 0 0;
+  -webkit-mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/geo-alt-fill.svg) no-repeat 0 0;
+          mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/geo-alt-fill.svg) no-repeat 0 0;
 }
 .sidebar .list-item .item-phone {
   margin-top: 16px;
@@ -96,8 +105,8 @@
   margin-right: 8px;
   display: inline-block;
   background-color: #888;
-  -webkit-mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/telephone-fill.svg) no-repeat 0 0;
-          mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/90d34b8772238f6b92a87e49e0632e2f56dec7d1/img/telephone-fill.svg) no-repeat 0 0;
+  -webkit-mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/telephone-fill.svg) no-repeat 0 0;
+          mask: url(https://raw.githubusercontent.com/xuannn0915/mask-map/4290a487d94cc88641ba7fdf9d487d318d6c41c7/img/telephone-fill.svg) no-repeat 0 0;
 }
 .sidebar .list-item .mask {
   display: flex;

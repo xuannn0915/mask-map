@@ -87,7 +87,6 @@ function chooseMonth(mm) {
 function renderDefault() {
     renderWeek();
     renderYMD();
-    // renderList();
     getData();
 }
 renderDefault();
@@ -103,6 +102,7 @@ function getData() {
         data = JSON.parse(xhr.responseText);
         dataAry = data.features;
         renderCounty();
+        renderMarker()
     }
 }
 
@@ -116,14 +116,11 @@ district.addEventListener('change', renderList);
 
 // 顯示縣市的選單
 function renderCounty() {
-    var countyAry = [];
     var countySel = [];
     var countyStr = "";
     for (var i = 0; i < dataAry.length; i++) {
-        countyAry.push(dataAry[i].properties.county);
-
-        if (!countySel.includes(countyAry[i])) {
-            countySel.push(countyAry[i]);
+        if (!countySel.includes(dataAry[i].properties.county)) {
+            countySel.push(dataAry[i].properties.county);
         }
     }
 
@@ -199,6 +196,7 @@ function renderList(e) {
     maskNumColor();
 }
 
+// 判斷口罩數量及顯示顏色
 function maskNumColor() {
     var adultNum = document.querySelectorAll('.adult-num');
     var childNum = document.querySelectorAll('.child-num');
@@ -225,6 +223,32 @@ function maskNumColor() {
         }
         else {
             childMask[o].setAttribute('class', 'mask-button own');
+        }
+    }
+}
+
+
+
+// 顯示地圖
+var map = L.map('map', {
+    center: [24.9847937, 121.5378535],
+    zoom: 16
+});
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+
+function renderMarker(e) {
+
+    for (var p = 0; p < dataAry.length; p++) {
+        var WE = dataAry[p].geometry.coordinates[0];
+        var NS = dataAry[p].geometry.coordinates[1];
+        
+        if(e.target.value == dataAry[p].properties.town){
+        
+            var markers = L.marker([NS, WE]).addTo(map);
         }
     }
 }
