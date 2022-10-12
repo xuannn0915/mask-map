@@ -129,6 +129,14 @@ body {
   color: #9C9C9C;
 }
 
+.pharmacy {
+  font-weight: 500;
+}
+
+.warning {
+  color: red;
+}
+
 @media (max-width: 1400px) {
   .sidebar {
     width: 45%;

@@ -102,7 +102,7 @@ function getData() {
         data = JSON.parse(xhr.responseText);
         dataAry = data.features;
         renderCounty();
-        renderMarker()
+        renderMarker();
     }
 }
 
@@ -134,11 +134,14 @@ function renderCounty() {
 }
 
 // 顯示行政區的選單
+var county;
 function renderDis(e) {
     e.preventDefault();
     var disStr = "";
     var disAry = [];
     var disSel = [];
+
+    county = e.target.value;
 
     // 將選擇到的縣市所有行政區域取出成陣列
     for (var k = 0; k < dataAry.length; k++) {
@@ -172,9 +175,10 @@ function renderDis(e) {
 function renderList(e) {
     e.preventDefault();
     var listStr = "";
+    var district = e.target.value;
 
     for (var m = 0; m < dataAry.length; m++) {
-        if (e.target.value == dataAry[m].properties.town) {
+        if (district == dataAry[m].properties.town && county == dataAry[m].properties.county) {
             listStr += `
             <li class="list-item">
                 <h3 class="item-title">${dataAry[m].properties.name}</h3>
@@ -193,7 +197,11 @@ function renderList(e) {
         }
         list.innerHTML = listStr;
     }
+
     maskNumColor();
+    mapPosition(district);
+    renderMarker(district);
+
 }
 
 // 判斷口罩數量及顯示顏色
@@ -239,16 +247,77 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// 充足的綠標
+var greenIcon = new L.Icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
-function renderMarker(e) {
+// 危險的紅標
+var redIcon = new L.Icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
+// 不足的灰標
+var greyIcon = new L.Icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+function renderMarker(district) {
     for (var p = 0; p < dataAry.length; p++) {
         var WE = dataAry[p].geometry.coordinates[0];
         var NS = dataAry[p].geometry.coordinates[1];
-        
-        if(e.target.value == dataAry[p].properties.town){
-        
-            var markers = L.marker([NS, WE]).addTo(map);
+        var adult = dataAry[p].properties.mask_adult;
+        var child = dataAry[p].properties.mask_child;
+
+        if (district == dataAry[p].properties.town && county == dataAry[p].properties.county) {
+
+            if (adult + child <= 500) {
+                var markers = L.marker([NS, WE], { icon: greyIcon }).addTo(map).bindPopup(`   
+                    <h5 class="pharmacy">${dataAry[p].properties.name}</h5>
+                    <p>成人：<span class="mask-ad">${dataAry[p].properties.mask_adult}</span></p>
+                    <p>小孩：<span class="mask-ch">${dataAry[p].properties.mask_child}</span></p>
+                    `);
+            }
+            else if (adult + child <= 1000) {
+                var markers = L.marker([NS, WE], { icon: redIcon }).addTo(map).bindPopup(`   
+                    <h5 class="pharmacy">${dataAry[p].properties.name}</h5>
+                    <p>成人：<span class="mask-ad">${dataAry[p].properties.mask_adult}</span></p>
+                    <p>小孩：<span class="mask-ch">${dataAry[p].properties.mask_child}</span></p>
+                    `);
+            }
+            else {
+                var markers = L.marker([NS, WE], { icon: greenIcon }).addTo(map).bindPopup(`   
+                    <h5 class="pharmacy">${dataAry[p].properties.name}</h5>
+                    <p>成人：<span class="mask-ad">${dataAry[p].properties.mask_adult}</span></p>
+                    <p>小孩：<span class="mask-ch">${dataAry[p].properties.mask_child}</span></p>
+                    `);
+            }
+
+        }
+    }
+}
+
+
+function mapPosition(district) {
+    for (var q = 0; q < dataAry.length; q++) {
+        if (district == dataAry[q].properties.town && county ==  dataAry[q].properties.county) {
+            var position = [dataAry[q].geometry.coordinates[1], dataAry[q].geometry.coordinates[0]];
+            map.setView(position, 16);
         }
     }
 }
