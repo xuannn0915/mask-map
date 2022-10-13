@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
 }
-
 
 
 #map {
@@ -148,11 +147,11 @@ body{
     }
 }
 
-.pharmacy{
+.pharmacy {
     font-weight: 500;
 }
 
-.warning{
+.warning {
     color: red;
 }
 
@@ -193,5 +192,25 @@ body{
             }
         }
 
+    }
+}
+
+@media(max-width:768px) {
+    body {
+        display: block;
+    }
+
+    #map {
+        width: 100%;
+        height: calc(100vh - 260px);
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 260px;
+
+        .list {
+            display: none;
+        }
     }
 }
