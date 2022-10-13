@@ -284,7 +284,7 @@ function renderMarker(district) {
         var adult = dataAry[p].properties.mask_adult;
         var child = dataAry[p].properties.mask_child;
 
-        // if (district == dataAry[p].properties.town && county == dataAry[p].properties.county) {
+        if (district == dataAry[p].properties.town && county == dataAry[p].properties.county) {
 
             if (adult + child <= 500) {
                 var markers = L.marker([NS, WE], { icon: greyIcon }).addTo(map).bindPopup(`   
@@ -308,7 +308,7 @@ function renderMarker(district) {
                     `);
             }
 
-        // }
+        }
     }
 }
 
